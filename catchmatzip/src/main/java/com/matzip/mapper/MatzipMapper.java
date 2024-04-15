@@ -14,4 +14,8 @@ public interface MatzipMapper {
 			+ "order by averageScore desc\r\n"
 			+ "limit 5")
 	public List<Matzip> getList();
+	@Select("select matzipId, matzipName, district, city, detailAddress, averageScore, category, image\r\n"
+			+ "from matzip inner join address on matzip.addressId = address.addressId\r\n"
+			+ "order by averageScore desc")
+	public List<Matzip> getListAll();
 }

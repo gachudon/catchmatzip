@@ -26,4 +26,9 @@ public class MatzipController {
 		log.info("list");
 		model.addAttribute("mList",service.getList());
 	}
+	@GetMapping("/matzipinfo")
+	public void matzipinfo(Model model) {
+		log.info("getListAll");
+		model.addAttribute("mList",service.getListAll());
+	}
 }

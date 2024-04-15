@@ -137,14 +137,14 @@
             </div>
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                    <a href="index.jsp" class="navbar-brand"><h1 class="text-primary display-6">맛Zip!</h1></a>
+                    <a href="index" class="navbar-brand"><h1 class="text-primary display-6">맛Zip!</h1></a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="index.jsp" class="nav-item nav-link active">홈</a>
-                            <a href="MatzipInfo.jsp" class="nav-item nav-link">동네맛집찾기</a>
+                            <a href="index" class="nav-item nav-link active">홈</a>
+                            <a href="matzipInfo" class="nav-item nav-link">동네맛집찾기</a>
                         </div>
                         <div class="d-flex m-3 me-0">
                             <a href="#" class="position-relative me-4 my-auto">

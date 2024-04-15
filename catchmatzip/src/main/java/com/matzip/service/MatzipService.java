@@ -20,4 +20,8 @@ public class MatzipService {
 		log.info("getList...");
 		return mapper.getList();
 	}
+	public List<Matzip> getListAll(){
+		log.info("getListAll...");
+		return mapper.getListAll();
+	}
 }
