@@ -144,7 +144,7 @@
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
                             <a href="index" class="nav-item nav-link active">홈</a>
-                            <a href="matzipInfo" class="nav-item nav-link">동네맛집찾기</a>
+                            <a href="matzipinfo" class="nav-item nav-link">동네맛집찾기</a>
                         </div>
                         <div class="d-flex m-3 me-0">
                             <a href="#" class="position-relative me-4 my-auto">
