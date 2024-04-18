@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,6 +34,7 @@
     </head>
 
     <body>
+ 
 
         <!-- Spinner Start -->
         <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
@@ -42,25 +44,25 @@
 
 
         <!-- Navbar start -->
-       <%--  
+        
         <c:choose>
-			<c:when test="${empty loginId}">
+			<c:when test="${empty userId}">
 			<div class="container-fluid fixed-top">
             
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                    <a href="index.jsp" class="navbar-brand"><h1 class="text-primary display-6">맛Zip!</h1></a>
+                    <a href="index" class="navbar-brand"><h1 class="text-primary display-6">맛Zip!</h1></a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="index.jsp" class="nav-item nav-link active">홈</a>
-                            <a href="MatzipInfo.jsp" class="nav-item nav-link">동네맛집찾기</a>
+                            <a href="index" class="nav-item nav-link active">홈</a>
+                            <a href="matzipinfo" class="nav-item nav-link">동네맛집찾기</a>
                         </div>
                         <div class="d-flex m-3 me-0">
                             
-                            <a href="login.jsp" class="my-auto">
+                            <a href="login" class="my-auto">
                                 <i class="fas fa-user fa-2x"></i>
                             </a>
                         </div>
@@ -73,65 +75,16 @@
 			
 			
 			<c:otherwise>
+			
 				 <div class="container-fluid fixed-top">
             <div class="container topbar bg-primary d-none d-lg-block">
                 <div class="d-flex justify-content-between">
                     <div class="top-info ps-2">
-                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">전라남도 강진군</a></small>
-                       	<small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">nickname</a></small>
+                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">${district} ${city}</a></small>
+                       	<small class="me-3"><i class="bi bi-person-fill me-2 text-secondary" ></i><a href="#" class="text-white">${nickname}</a></small>
                     </div>
                     <div class="top-link pe-2">
-                        <a href="#" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
-                    </div>
-                </div>
-            </div>
-            <div class="container px-0">
-                <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                    <a href="index.jsp" class="navbar-brand"><h1 class="text-primary display-6">맛Zip!</h1></a>
-                    <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="fa fa-bars text-primary"></span>
-                    </button>
-                    <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
-                        <div class="navbar-nav mx-auto">
-                            <a href="index.jsp" class="nav-item nav-link active">홈</a>
-                            <a href="MatzipInfo.jsp" class="nav-item nav-link">동네맛집찾기</a>
-                        </div>
-                        <div class="d-flex m-3 me-0">
-                            <a href="#" class="position-relative me-4 my-auto">
-                                <i class="fa fa-shopping-bag fa-2x"></i>
-                     
-                            </a>
-                            
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> <i class="fas fa-user fa-2x"></i></a>
-                                <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="cart.html" class="dropdown-item">내 정보</a>
-                                    <a href="chackout.html" class="dropdown-item">내 리뷰</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-						
-			</c:otherwise>
-		</c:choose> --%>
-        
-        
-        
-        
-        <!-- Navbar End -->
-
-<div class="container-fluid fixed-top">
-            <div class="container topbar bg-primary d-none d-lg-block">
-                <div class="d-flex justify-content-between">
-                    <div class="top-info ps-2">
-                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">전라남도 강진군</a></small>
-                       	<small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">nickname</a></small>
-                    </div>
-                    <div class="top-link pe-2">
-                        <a href="#" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
+                        <a href="${pageContext.request.contextPath}/matzip/logout" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
                     </div>
                 </div>
             </div>
@@ -148,15 +101,15 @@
                         </div>
                         <div class="d-flex m-3 me-0">
                             <a href="#" class="position-relative me-4 my-auto">
-                                <i class="fa fa-shopping-bag fa-2x"></i>
+                                <i class="bi bi-star-fill fa-2x"></i>
                      
                             </a>
                             
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> <i class="fas fa-user fa-2x"></i></a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="Mypage.jsp" class="dropdown-item">마이페이지</a>
-                                    <a href="myReview.jsp" class="dropdown-item">마이 리뷰</a>
+                                    <a href="myPage" class="dropdown-item">마이페이지</a>
+                                    <a href="/matzip/myreview" class="dropdown-item">마이리뷰</a>
                                 </div>
                             </div>
                         </div>
@@ -164,6 +117,14 @@
                 </nav>
             </div>
         </div>
+					
+			</c:otherwise>
+		</c:choose> 
+        
+        
+        
+        
+        <!-- Navbar End -->
 
         
 

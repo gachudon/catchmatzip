@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,77 +52,84 @@
                                         <div class="mb-3">
                                             <h4>카테고리</h4>
                                             <ul class="list-unstyled fruite-categorie">
-                                                <li>
-                                                    <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>한식</a>
-                                                        <span>(3)</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>일식</a>
-                                                        <span>(5)</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>중식</a>
-                                                        <span>(2)</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>베이커리</a>
-                                                        <span>(8)</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>고기구이</a>
-                                                        <span>(5)</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>족발/보쌈</a>
-                                                        <span>(5)</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>피자</a>
-                                                        <span>(5)</span>
-                                                    </div>
-                                                </li><li>
-                                                    <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>양식</a>
-                                                        <span>(5)</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>아시안</a>
-                                                        <span>(5)</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>치킨</a>
-                                                        <span>(5)</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>버거</a>
-                                                        <span>(5)</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>분식</a>
-                                                        <span>(5)</span>
-                                                    </div>
-                                                </li>
+                                            	<c:forEach var="category" items="${cList }">
+                                            		<li>
+                                            			<div class="d-flex justify-content-between fruite-name">
+                                            				<a href="#"><i class="fas me-2">${category.category }</i></a>
+                                            			</div>
+                                            		</li>
+                                            	</c:forEach>
+<!--                                                 <li> -->
+<!--                                                     <div class="d-flex justify-content-between fruite-name"> -->
+<!--                                                         <a href="#"><i class="fas fa-apple-alt me-2"></i>한식</a> -->
+<!--                                                         <span>(3)</span> -->
+<!--                                                     </div> -->
+<!--                                                 </li> -->
+<!--                                                 <li> -->
+<!--                                                     <div class="d-flex justify-content-between fruite-name"> -->
+<!--                                                         <a href="#"><i class="fas fa-apple-alt me-2"></i>일식</a> -->
+<!--                                                         <span>(5)</span> -->
+<!--                                                     </div> -->
+<!--                                                 </li> -->
+<!--                                                 <li> -->
+<!--                                                     <div class="d-flex justify-content-between fruite-name"> -->
+<!--                                                         <a href="#"><i class="fas fa-apple-alt me-2"></i>중식</a> -->
+<!--                                                         <span>(2)</span> -->
+<!--                                                     </div> -->
+<!--                                                 </li> -->
+<!--                                                 <li> -->
+<!--                                                     <div class="d-flex justify-content-between fruite-name"> -->
+<!--                                                         <a href="#"><i class="fas fa-apple-alt me-2"></i>베이커리</a> -->
+<!--                                                         <span>(8)</span> -->
+<!--                                                     </div> -->
+<!--                                                 </li> -->
+<!--                                                 <li> -->
+<!--                                                     <div class="d-flex justify-content-between fruite-name"> -->
+<!--                                                         <a href="#"><i class="fas fa-apple-alt me-2"></i>고기구이</a> -->
+<!--                                                         <span>(5)</span> -->
+<!--                                                     </div> -->
+<!--                                                 </li> -->
+<!--                                                 <li> -->
+<!--                                                     <div class="d-flex justify-content-between fruite-name"> -->
+<!--                                                         <a href="#"><i class="fas me-2"></i>족발/보쌈</a> -->
+<!--                                                         <span>(5)</span> -->
+<!--                                                     </div> -->
+<!--                                                 </li> -->
+<!--                                                 <li> -->
+<!--                                                     <div class="d-flex justify-content-between fruite-name"> -->
+<!--                                                         <a href="#"><i class="fas fa-apple-alt me-2"></i>피자</a> -->
+<!--                                                         <span>(5)</span> -->
+<!--                                                     </div> -->
+<!--                                                 </li><li> -->
+<!--                                                     <div class="d-flex justify-content-between fruite-name"> -->
+<!--                                                         <a href="#"><i class="fas fa-apple-alt me-2"></i>양식</a> -->
+<!--                                                         <span>(5)</span> -->
+<!--                                                     </div> -->
+<!--                                                 </li> -->
+<!--                                                 <li> -->
+<!--                                                     <div class="d-flex justify-content-between fruite-name"> -->
+<!--                                                         <a href="#"><i class="fas fa-apple-alt me-2"></i>아시안</a> -->
+<!--                                                         <span>(5)</span> -->
+<!--                                                     </div> -->
+<!--                                                 </li> -->
+<!--                                                 <li> -->
+<!--                                                     <div class="d-flex justify-content-between fruite-name"> -->
+<!--                                                         <a href="#"><i class="fas fa-apple-alt me-2"></i>치킨</a> -->
+<!--                                                         <span>(5)</span> -->
+<!--                                                     </div> -->
+<!--                                                 </li> -->
+<!--                                                 <li> -->
+<!--                                                     <div class="d-flex justify-content-between fruite-name"> -->
+<!--                                                         <a href="#"><i class="fas fa-apple-alt me-2"></i>버거</a> -->
+<!--                                                         <span>(5)</span> -->
+<!--                                                     </div> -->
+<!--                                                 </li> -->
+<!--                                                 <li> -->
+<!--                                                     <div class="d-flex justify-content-between fruite-name"> -->
+<!--                                                         <a href="#"><i class="fas fa-apple-alt me-2"></i>분식</a> -->
+<!--                                                         <span>(5)</span> -->
+<!--                                                     </div> -->
+<!--                                                 </li> -->
                                             </ul>
                                         </div>
                                     </div>
@@ -129,152 +137,169 @@
                             </div>
                             <div class="col-lg-9">
                                 <div class="row g-4 justify-content-center">
-                                   
-                                    <div class="col-md-6 col-lg-6 col-xl-4">
-                                        <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**">
-                                                <img src="../img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt="">
-                                            </div>
-                                            <!-- <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
-                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>맛집이름</h4></a>
-                                                <p>대표메뉴</p>
-                                                <p>상세주소</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                	<c:forEach var="matzip" items="${mListAll}">
+                                		<div class="col-md-6 col-lg-6 col-xl-4">
+                                		<a href="#">
+                                			<div class="fruite-img">
+                                				<img src="${pageContext.request.contextPath}/resources/img/matzip/${matzip.image}" class="img-fluid w-100 rounded-top" alt="">
+                                			</div>
+                                			<div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left:10px;">${matzip.category }</div>
+                                			<div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                				<h4>${matzip.matzipName }</h4>
+                                				<p>${matzip.category}</p>
+                                				<p>${matzip.district } ${matzip.city } ${matzip.detailAddress }</p>
+                                				<div class="d-flex justify-content-between flex-lg-wrap">
+                                					<p class="mb-0">${matzip.averageScore }</p>
+                                				</div>
+                                			</div>
+                                		</a>
+                                		</div>
+                                	</c:forEach>
+<!--                                     <div class="col-md-6 col-lg-6 col-xl-4"> -->
+<!--                                         <div class="rounded position-relative fruite-item"> -->
+<!--                                             <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**"> -->
+<%--                                                 <img src="${pageContext.request.contextPath}/resources/img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt=""> --%>
+<!--                                             </div> -->
+<!--                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> //-->
+<!--                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom"> -->
+<!--                                                 <h4>맛집이름</h4></a> -->
+<!--                                                 <p>대표메뉴</p> -->
+<!--                                                 <p>상세주소</p> -->
+<!--                                                 <div class="d-flex justify-content-between flex-lg-wrap"> -->
+<!--                                                     <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p> -->
+<!--                                                 </div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
                                     
-                                    <div class="col-md-6 col-lg-6 col-xl-4">
-                                        <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**">
-                                                <img src="../img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt="">
-                                            </div>
-                                            <!-- <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
-                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>맛집이름</h4></a>
-                                                <p>대표메뉴</p>
-                                                <p>상세주소</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 col-xl-4">
-                                        <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**">
-                                                <img src="../img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt="">
-                                            </div>
-                                            <!-- <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
-                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>맛집이름</h4></a>
-                                                <p>대표메뉴</p>
-                                                <p>상세주소</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 col-xl-4">
-                                        <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**">
-                                                <img src="../img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt="">
-                                            </div>
-                                            <!-- <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
-                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>맛집이름</h4></a>
-                                                <p>대표메뉴</p>
-                                                <p>상세주소</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 col-xl-4">
-                                        <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**">
-                                                <img src="../img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt="">
-                                            </div>
-                                            <!-- <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
-                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>맛집이름</h4></a>
-                                                <p>대표메뉴</p>
-                                                <p>상세주소</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 col-xl-4">
-                                        <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**">
-                                                <img src="../img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt="">
-                                            </div>
-                                            <!-- <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
-                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>맛집이름</h4></a>
-                                                <p>대표메뉴</p>
-                                                <p>상세주소</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 col-xl-4">
-                                        <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**">
-                                                <img src="../img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt="">
-                                            </div>
-                                            <!-- <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
-                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>맛집이름</h4></a>
-                                                <p>대표메뉴</p>
-                                                <p>상세주소</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 col-xl-4">
-                                        <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**">
-                                                <img src="../img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt="">
-                                            </div>
-                                            <!-- <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
-                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>맛집이름</h4></a>
-                                                <p>대표메뉴</p>
-                                                <p>상세주소</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 col-xl-4">
-                                        <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**">
-                                                <img src="../img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt="">
-                                            </div>
-                                            <!-- <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
-                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>맛집이름</h4></a>
-                                                <p>대표메뉴</p>
-                                                <p>상세주소</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                     <div class="col-md-6 col-lg-6 col-xl-4"> -->
+<!--                                         <div class="rounded position-relative fruite-item"> -->
+<!--                                             <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**"> -->
+<%--                                                 <img src="${pageContext.request.contextPath}/resources/img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt=""> --%>
+<!--                                             </div> -->
+<!--                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
+<!--                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom"> -->
+<!--                                                 <h4>맛집이름</h4></a> -->
+<!--                                                 <p>대표메뉴</p> -->
+<!--                                                 <p>상세주소</p> -->
+<!--                                                 <div class="d-flex justify-content-between flex-lg-wrap"> -->
+<!--                                                     <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p> -->
+<!--                                                 </div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                     <div class="col-md-6 col-lg-6 col-xl-4"> -->
+<!--                                         <div class="rounded position-relative fruite-item"> -->
+<!--                                             <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**"> -->
+<%--                                                 <img src="${pageContext.request.contextPath}/resources/img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt=""> --%>
+<!--                                             </div> -->
+<!--                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
+<!--                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom"> -->
+<!--                                                 <h4>맛집이름</h4></a> -->
+<!--                                                 <p>대표메뉴</p> -->
+<!--                                                 <p>상세주소</p> -->
+<!--                                                 <div class="d-flex justify-content-between flex-lg-wrap"> -->
+<!--                                                     <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p> -->
+<!--                                                 </div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                     <div class="col-md-6 col-lg-6 col-xl-4"> -->
+<!--                                         <div class="rounded position-relative fruite-item"> -->
+<!--                                             <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**"> -->
+<%--                                                 <img src="${pageContext.request.contextPath}/resources/img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt=""> --%>
+<!--                                             </div> -->
+<!--                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
+<!--                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom"> -->
+<!--                                                 <h4>맛집이름</h4></a> -->
+<!--                                                 <p>대표메뉴</p> -->
+<!--                                                 <p>상세주소</p> -->
+<!--                                                 <div class="d-flex justify-content-between flex-lg-wrap"> -->
+<!--                                                     <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p> -->
+<!--                                                 </div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                     <div class="col-md-6 col-lg-6 col-xl-4"> -->
+<!--                                         <div class="rounded position-relative fruite-item"> -->
+<!--                                             <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**"> -->
+<%--                                                 <img src="${pageContext.request.contextPath}/resources/img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt=""> --%>
+<!--                                             </div> -->
+<!--                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
+<!--                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom"> -->
+<!--                                                 <h4>맛집이름</h4></a> -->
+<!--                                                 <p>대표메뉴</p> -->
+<!--                                                 <p>상세주소</p> -->
+<!--                                                 <div class="d-flex justify-content-between flex-lg-wrap"> -->
+<!--                                                     <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p> -->
+<!--                                                 </div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                     <div class="col-md-6 col-lg-6 col-xl-4"> -->
+<!--                                         <div class="rounded position-relative fruite-item"> -->
+<!--                                             <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**"> -->
+<%--                                                 <img src="${pageContext.request.contextPath}/resources/img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt=""> --%>
+<!--                                             </div> -->
+<!--                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
+<!--                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom"> -->
+<!--                                                 <h4>맛집이름</h4></a> -->
+<!--                                                 <p>대표메뉴</p> -->
+<!--                                                 <p>상세주소</p> -->
+<!--                                                 <div class="d-flex justify-content-between flex-lg-wrap"> -->
+<!--                                                     <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p> -->
+<!--                                                 </div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                     <div class="col-md-6 col-lg-6 col-xl-4"> -->
+<!--                                         <div class="rounded position-relative fruite-item"> -->
+<!--                                             <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**"> -->
+<%--                                                 <img src="${pageContext.request.contextPath}/resources/img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt=""> --%>
+<!--                                             </div> -->
+<!--                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
+<!--                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom"> -->
+<!--                                                 <h4>맛집이름</h4></a> -->
+<!--                                                 <p>대표메뉴</p> -->
+<!--                                                 <p>상세주소</p> -->
+<!--                                                 <div class="d-flex justify-content-between flex-lg-wrap"> -->
+<!--                                                     <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p> -->
+<!--                                                 </div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                     <div class="col-md-6 col-lg-6 col-xl-4"> -->
+<!--                                         <div class="rounded position-relative fruite-item"> -->
+<!--                                             <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**"> -->
+<%--                                                 <img src="${pageContext.request.contextPath}/resources/img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt=""> --%>
+<!--                                             </div> -->
+<!--                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
+<!--                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom"> -->
+<!--                                                 <h4>맛집이름</h4></a> -->
+<!--                                                 <p>대표메뉴</p> -->
+<!--                                                 <p>상세주소</p> -->
+<!--                                                 <div class="d-flex justify-content-between flex-lg-wrap"> -->
+<!--                                                     <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p> -->
+<!--                                                 </div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                     <div class="col-md-6 col-lg-6 col-xl-4"> -->
+<!--                                         <div class="rounded position-relative fruite-item"> -->
+<!--                                             <div class="fruite-img"><a href="MatzipDetail.jsp?matzipId=**"> -->
+<!--                                                 <img src="../img/picpicpic1.png" class="img-fluid w-100 rounded-top" alt=""> -->
+<!--                                             </div> -->
+<!--                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">카테고리?</div> -->
+<!--                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom"> -->
+<!--                                                 <h4>맛집이름</h4></a> -->
+<!--                                                 <p>대표메뉴</p> -->
+<!--                                                 <p>상세주소</p> -->
+<!--                                                 <div class="d-flex justify-content-between flex-lg-wrap"> -->
+<!--                                                     <p class="text-dark fs-5 fw-bold mb-0">⭐⭐⭐⭐⭐</p> -->
+<!--                                                 </div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
                                   
                                    
                                     

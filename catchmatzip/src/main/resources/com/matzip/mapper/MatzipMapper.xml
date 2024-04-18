@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.matzip.mapper.MatzipMapper">
+	<insert id="join1">
+		insert into matzipuser(userId,pwd,userName,phoneNumber,nickname,addressId,userCategory)
+		values(#{userId},#{pwd},#{userName},#{phoneNumber},#{nickname},#{addressId},0)
+	</insert>
+	<!-- ajh -->
+	<select id="findIdResult" resultType="String">
+		select userId from
+		matzipuser where userName = #{userName} and phoneNumber =
+		#{phoneNumber}
+	</select>
+	<!-- ajh end -->
+</mapper>

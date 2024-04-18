@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.matzip.domain.Address;
 import com.matzip.domain.Matzip;
 
 import lombok.Setter;
@@ -27,5 +28,10 @@ public class MatzipMapperTest {
 	public void testList() {
 		List<Matzip> matzips= mapper.getList();
 		matzips.forEach(matzip->log.info(matzip));
+	}
+	@Test
+	public void testJoin2() {
+		List<Address> addresses= mapper.join2();
+		addresses.forEach(address->log.info(address));
 	}
 }

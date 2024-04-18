@@ -31,4 +31,16 @@ public class MatzipControllerTest {
 	public void testList() throws Exception{
 		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/matzip/index")).andReturn().getModelAndView().getModelMap());
 	}
+	@Test
+	public void testListAll() throws Exception{
+		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/matzip/matzipinfo")).andReturn().getModelAndView().getModelMap());
+	}
+	@Test
+	public void testjoin() throws Exception{
+		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/matzip/join")).andReturn().getModelAndView().getModelMap());
+	}
+//	@Test
+//	public void testjoin1() throws Exception{
+//		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/matzip/join1")).andReturn().getModelAndView().getModelMap());
+//	}
 }
