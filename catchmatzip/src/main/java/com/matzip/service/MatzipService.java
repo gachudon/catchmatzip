@@ -75,5 +75,16 @@ public class MatzipService {
 		}
 		return userId;
 	}
+	
+	public String findPwResult(String userId, String userName, String phoneNumber) {
+		log.info("findPw...");
+		String pwd = "";
+		try {
+			pwd = mapper.findPwResult(userId, userName, phoneNumber);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return pwd;
+	}
 	//ajhend
 }

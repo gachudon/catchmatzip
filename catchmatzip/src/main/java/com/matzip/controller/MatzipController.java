@@ -166,5 +166,23 @@ public class MatzipController {
 	    // 뷰의 경로 반환
 	    return "/matzip/findIdResult";
 	}
+	
+	@GetMapping("/findPw")
+	public String findPw(HttpServletRequest request, HttpServletResponse response) {
+		return "/matzip/findPw";
+	}
+
+	@PostMapping(value = "/matzip/findPwResult")
+	public String findPwResult(@RequestParam("userId") String userId, @RequestParam("userName") String userName,
+			@RequestParam("phoneNumber") String phoneNumber, Model model) {
+
+		String pwd = service.findPwResult(userId, userName, phoneNumber);
+
+		// 결과를 모델에 추가하여 뷰로 전달
+		model.addAttribute("pwd", pwd);
+
+		// 뷰의 경로 반환
+		return "/matzip/findPwResult";
+	}
 	//ajh end
 }

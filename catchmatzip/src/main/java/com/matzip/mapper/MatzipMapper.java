@@ -56,5 +56,7 @@ public interface MatzipMapper {
 	
 	//ajh
 	public String findIdResult(@Param("userName")String userName, @Param("phoneNumber")String phoneNumber);
+	
+	public String findPwResult(@Param("userId")String userId, @Param("userName")String userName, @Param("phoneNumber")String phoneNumber);
 	//ajhend
 }

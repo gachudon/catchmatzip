@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>계정 찾기</title>
+<title>비밀번호 찾기</title>
 </head>
 <body>
 	<jsp:include
@@ -20,19 +20,22 @@
 				<div class="row g-4">
 					<div class="col-12">
 						<div class="text-center mx-auto" style="max-width: 700px;">
-							<h1 class="text-primary">계정 찾기</h1>
+							<h1 class="text-primary">비밀번호 찾기</h1>
 						</div>
 					</div>
 
 					<div class="col-lg-12">
-						<form action="/matzip/findIdResult" method="POST" class="">
+						<form action="/matzip/findPwResult" method="POST" class="">
+							<input type="text" id="userId" name="userId"
+								class="w-100 form-control border-0 py-3 mb-4" placeholder="아이디">
 							<input type="text" id="userName" name="userName"
 								class="w-100 form-control border-0 py-3 mb-4" placeholder="이름">
 							<input type="tel" id="phoneNumber" name="phoneNumber"
 								class="w-100 form-control border-0 py-3 mb-4" placeholder="전화번호">
+
 							<button
 								class="w-100 btn form-control border-secondary py-3 bg-white text-primary "
-								type="submit">계정 찾기</button>
+								type="submit">비밀번호 찾기</button>
 						</form>
 					</div>
 				</div>

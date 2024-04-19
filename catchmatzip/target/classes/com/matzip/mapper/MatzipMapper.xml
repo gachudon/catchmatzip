@@ -12,5 +12,10 @@
 		matzipuser where userName = #{userName} and phoneNumber =
 		#{phoneNumber}
 	</select>
+	<select id="findPwResult" resultType="String">
+		select pwd from
+		matzipuser where userName = #{userName} and phoneNumber =
+		#{phoneNumber} and userId = #{userId}
+	</select>
 	<!-- ajh end -->
 </mapper>

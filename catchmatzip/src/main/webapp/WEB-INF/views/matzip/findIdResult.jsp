@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 조회 결과</title>
+<title>계정 조회 결과</title>
 </head>
 <body>
 	<jsp:include
@@ -21,14 +21,14 @@
 				<div class="row g-4">
 					<div class="col-12">
 						<div class="text-center mx-auto" style="max-width: 700px;">
-							<h1 class="text-primary mb-4">아이디 조회 결과</h1>
+							<h1 class="text-primary mb-4">계정 조회 결과</h1>
 							<h2>
 								<c:choose>
 									<c:when test="${userId != null}">
 										<p>${userId}</p>
 									</c:when>
 									<c:otherwise>
-										<p>아이디를 찾을 수 없습니다.</p>
+										<p>가입된 계정이 없습니다.</p>
 									</c:otherwise>
 								</c:choose>
 							</h2>

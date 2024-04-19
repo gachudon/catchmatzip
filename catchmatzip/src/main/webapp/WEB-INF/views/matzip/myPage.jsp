@@ -47,14 +47,14 @@
 								<div class="form-item w-100">
 									<label class="form-label my-3">비밀번호</label> 
 									<input type="password"
-										class="form-control" value="${pwd}">
+										class="form-control" name="pwd">
 								</div>
 							</div>
 							<div class="col-md-12 col-lg-6">
 								<div class="form-item w-100">
 									<label class="form-label my-3">비밀번호 확인</label> 
 									<input type="password"
-										class="form-control" value="${pwd}" name="pwd">
+										class="form-control" >
 								</div>
 							</div>
 						</div>
