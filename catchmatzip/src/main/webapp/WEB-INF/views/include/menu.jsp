@@ -100,10 +100,10 @@
                             <a href="matzipinfo" class="nav-item nav-link">동네맛집찾기</a>
                         </div>
                         <div class="d-flex m-3 me-0">
-                            <a href="#" class="position-relative me-4 my-auto">
-                                <i class="bi bi-star-fill fa-2x"></i>
+<!--                             <a href="#" class="position-relative me-4 my-auto"> -->
+<!--                                 <i class="bi bi-star-fill fa-2x"></i> -->
                      
-                            </a>
+<!--                             </a> -->
                             
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> <i class="fas fa-user fa-2x"></i></a>

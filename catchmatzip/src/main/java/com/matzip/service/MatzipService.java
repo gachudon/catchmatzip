@@ -10,6 +10,7 @@ import com.matzip.domain.Category;
 import com.matzip.domain.Matzip;
 import com.matzip.domain.MatzipUser;
 import com.matzip.domain.MyReview;
+import com.matzip.domain.Review;
 import com.matzip.mapper.MatzipMapper;
 
 import lombok.Setter;
@@ -41,9 +42,24 @@ public class MatzipService {
 		return mapper.join2();
 	} //join2
 	
+	public boolean selectId(String id) {
+		log.info("confirmId...");
+		return mapper.selectId(id);
+	}
+	
 	public List<MyReview> myReview(String userId){
 		log.info("myReview...");
 		return mapper.myReview(userId);
+	}
+	
+	public int putReview(Review review) {
+		log.info("putReview...");
+		return mapper.putReview(review);
+	}
+	
+	public String putReview1(Integer matzipId) {
+		log.info("putReview1");
+		return mapper.putReview1(matzipId);
 	}
 	
 	//ssm
@@ -62,6 +78,30 @@ public class MatzipService {
 		log.info("SERVICE-MYPAGE1");
 		return mapper.myPage1(matzipUser)==1?1:0;
 	}
+	
+	//matzipInfo 
+		public List<Matzip> getCityMatzip(Integer addressId){
+			return mapper.getCityMatzip(addressId);
+		}
+		
+		public List<Matzip> getCategoryMatzip(String category){
+			return mapper.getCategoryMatzip(category);
+		}
+		
+		public List<Matzip> getCateAddrMatzip(String category, Integer addressId){
+			return mapper.getCateAddrMatzip(category, addressId);
+		}
+		
+		public List<Matzip> getSearchMatzip(String search){
+			return mapper.getSearchMatip(search);
+		}
+		
+		public List<Matzip> getAddrSearchMatzip(String search, Integer addressId){
+			
+			return mapper.getAddrSearchMatzip(search, addressId);
+		}
+	
+	
 	//ssmend
 	//ajh
 	public String findIdResult(String userName, String phoneNumber) {
@@ -85,6 +125,20 @@ public class MatzipService {
 			e.printStackTrace();
 		}
 		return pwd;
+	}
+	
+	public Matzip matzipDetail(Integer matzipId) {
+		log.info("matzipDetail...");
+		return mapper.matzipDetail(matzipId);
+	}
+
+	public List<Review> getReviewListByMatzipId(Integer matzipId) {
+		log.info("getReviewListByMatzipId...");
+		return mapper.getReviewListByMatzipId(matzipId);
+	}
+
+	public List<Matzip> getListBySearch(String keyword) {
+		return mapper.getListBySearch(keyword);
 	}
 	//ajhend
 }

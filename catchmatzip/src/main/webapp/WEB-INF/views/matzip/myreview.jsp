@@ -32,14 +32,19 @@
 	                		<div class="position-relative">
 	                			<div class="d-flex align-items-center flex-nowrap">
 		                			<div class="bg-secondary rounded">
-		                				<img src="${pageContext.request.contextPath}/resources/img/matzip/${myreview.image}"/>
+		                				<img src="${pageContext.request.contextPath}/resources/img/matzip/${myreview.image}" style="width:400px; height:250px;"/>
 		                			</div>
 		                			<div class="ms-4 d-block">
 		                				<h4 class="text-dark">${myreview.matzipName}</h4>
-		                				<h4 class="text-dark">${myreview.score }/5점</h4>
-		                			</div>
+		                				<c:forEach begin="1" end="${myreview.score}">
+											<i class="fa fa-star text-secondary"></i>
+										</c:forEach>
 		                			<p>${myreview.writtenTime }</p>
+		                			</div>
+		                			
+		                			<div style="width:450px;">
 		                			<p class="m-0 pb-3">${myreview.reviewComment }</p>
+		                			</div>
 		                			<a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">수정하기</a>
 		                			<a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">삭제하기</a>
 	                			</div>

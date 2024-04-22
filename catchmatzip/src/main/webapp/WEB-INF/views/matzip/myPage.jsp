@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <title>myPage</title>
-
+<script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
 </head>
 
 <body>
@@ -45,37 +45,50 @@
 						<div class="row">
 							<div class="col-md-12 col-lg-6">
 								<div class="form-item w-100">
-									<label class="form-label my-3">비밀번호</label> 
+									<label class="form-label my-3">패스워드</label> 
 									<input type="password"
-										class="form-control" name="pwd">
+										class="form-control" name="pwd" required>
 								</div>
 							</div>
 							<div class="col-md-12 col-lg-6">
 								<div class="form-item w-100">
-									<label class="form-label my-3">비밀번호 확인</label> 
+									<label class="form-label my-3" id="pwdconfirm">패스워드 확인</label> 
 									<input type="password"
-										class="form-control" >
+										class="form-control" name="pwdcon" required>
 								</div>
 							</div>
+							<script type="text/javascript">
+                            	$(document).ready(function(){
+                            		$("input[name=pwdcon]").on("focusout", function(){
+	                            		if($("input[name=pwd]").val() != $("input[name=pwdcon]").val()){
+	                            			$("#change").attr("disabled",true);
+	                            			$("#pwdconfirm").text("패스워드 확인 패스워드가 일치하지 않습니다.");
+	                            		} else{
+	                            			$("#pwdconfirm").text("패스워드 확인");
+	                            			$("#change").attr("disabled",false);
+	                            		}
+                            		});
+                            	});
+                            </script>
 						</div>
 
 						<div class="row">
 							<div class="col-md-12 col-lg-6">
 								<div class="form-item w-100">
 									<label class="form-label my-3">이름</label> <input type="text"
-										class="form-control" value="${userName }" name="userName">
+										class="form-control" value="${userName }" name="userName" required>
 								</div>
 							</div>
 							<div class="col-md-12 col-lg-6">
 								<div class="form-item w-100">
 									<label class="form-label my-3">별명</label> <input type="text"
-										class="form-control" value="${nickname }" name="nickname">
+										class="form-control" value="${nickname }" name="nickname" required>
 								</div>
 							</div>
 						</div>
 						<div class="form-item">
 							<label class="form-label my-3">전화번호</label> <input type="tel"
-								class="form-control" value="${phoneNumber }" name="phoneNumber">
+								class="form-control" value="${phoneNumber }" name="phoneNumber" required>
 						</div>
 
 						<div>&nbsp;</div>
@@ -92,17 +105,23 @@
 
 									</select>
 								</div>
+								<script type="text/javascript">
+									var addressId = <%= session.getAttribute("addressId")%>
+									$(document).ready(function(){
+										$("select[name=addressId] option[name=addressId]").prop("selected",true);
+									});
+								</script>
 								<div class="col-md-12 col-lg-6">
 									<select class="form-select" aria-label="Default select example"
 										name="addressId">
-										<option value="1">강진군</option>
-										<option value="2">광양시</option>
-										<option value="3">무안군</option>
-										<option value="4">순천시</option>
-										<option value="5">여수시</option>
-										<option value="6">영암군</option>
-										<option value="7">완도군</option>
-										<option value="8">해남군</option>
+										<option name="1" value="1">강진군</option>
+										<option name="2" value="2">광양시</option>
+										<option name="3" value="3">무안군</option>
+										<option name="4" value="4">순천시</option>
+										<option name="5" value="5">여수시</option>
+										<option name="6" value="6">영암군</option>
+										<option name="7" value="7">완도군</option>
+										<option name="8" value="8">해남군</option>
 									</select>
 								</div>
 							</div>
@@ -112,7 +131,7 @@
 
 				<div
 					class="row g-4 text-center align-items-center justify-content-center pt-4">
-					<button type="submit"
+					<button id="change" type="submit"
 						class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">내
 						정보 수정</button>
 				</div>

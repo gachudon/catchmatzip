@@ -24,8 +24,9 @@
 							<h1 class="text-primary mb-4">계정 조회 결과</h1>
 							<h2>
 								<c:choose>
-									<c:when test="${userId != null}">
-										<p>${userId}</p>
+									<c:when test="${fId != null}">
+										<p>ID : ${fId}</p>
+										<p>Password : ${fpwd}</p>
 									</c:when>
 									<c:otherwise>
 										<p>가입된 계정이 없습니다.</p>
