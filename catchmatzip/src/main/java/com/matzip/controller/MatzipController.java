@@ -1,7 +1,7 @@
 package com.matzip.controller;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
@@ -21,6 +21,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,13 +30,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.matzip.domain.Address;
-import com.matzip.domain.Attached;
+import com.matzip.domain.Criteria;
+import com.matzip.domain.Matzip;
+import com.matzip.domain.MatzipApply;
+import com.matzip.domain.MatzipModify;
 import com.matzip.domain.MatzipUser;
+import com.matzip.domain.ModReview;
+import com.matzip.domain.PageDTO;
+import com.matzip.domain.PutReview;
 import com.matzip.domain.Review;
 //import com.matzip.doma
 import com.matzip.service.MatzipService;
@@ -101,21 +104,40 @@ public class MatzipController {
 	}
 	
 	@GetMapping("/adminmatzip")
-	public void adminMatzip(@RequestParam(required = false) String keyword, Model model) {
+	public void adminMatzip(@RequestParam(required = false) String keyword, Model model,@RequestParam(required=false)Integer pageNum, @RequestParam(required=false) Integer amount) {
 		model.addAttribute("aList", service.join2());
 	    if (keyword != null && !keyword.isEmpty())
 			model.addAttribute("mList", service.getListBySearch(keyword));
 		else
 			model.addAttribute("mList", service.getListAll());
+	    
+	  //추가
+		
+		
+	  		if(pageNum == null) {
+	  			pageNum = 1;
+	  		}
+	  		if(amount==null) {
+	  			amount = 10;
+	  		}
+	  		Criteria cri = new Criteria(pageNum, amount);
+	  		PageDTO dto = new PageDTO(cri, service.countAdminMatzip() );
+	  		Integer first = cri.getAmount()*(cri.getPageNum()-1);
+	  		Integer second = cri.getAmount();
+	  		
+	  		//추가
+	  	    if (keyword != null && !keyword.isEmpty())
+	  			model.addAttribute("mList", service.getListBySearch(keyword));
+	  		else {
+	  			model.addAttribute("mList", service.adminMatzipPaging(first, second));
+	  			model.addAttribute("pagingDTO", dto);
+	  		}
 	}
 	
-	@GetMapping("/putReview")
-	public void putReview(Model model) {
-//		model.addAttribute("matzipId",1);
-//		model.addAttribute("userId","gycity");
-//		model.addAttribute("matzipName",service.putReview1((Integer)model.getAttribute("matzipId")));
-//		log.info("putReview...");
-	}
+
+	
+//	@PostMapping("/putReviewAction") //버튼 누르면 요거 작동
+	
 	
 	@PostMapping("/confirmId")
 	public ResponseEntity<Boolean> confirmId(String id){
@@ -132,6 +154,166 @@ public class MatzipController {
 		
 		return new ResponseEntity<>(result,HttpStatus.OK);
 	}
+	
+	@GetMapping("/putReview")
+	public void putReview(Model model, @RequestParam(required=true) Integer matzipId) {
+		//1. 리뷰 등록 시 보여주는 정보 : matzipName
+		//2. 리뷰 등록 시 필요한 정보 : matzipId, userId, reviewComment, image
+		model.addAttribute("matzipName",service.putReview1(matzipId));
+//		model.addAttribute("matzipId",1);
+//		model.addAttribute("userId","gycity");
+//		model.addAttribute("matzipName",service.putReview1((Integer)model.getAttribute("matzipId")));
+//		log.info("putReview...");
+	}
+	
+	@GetMapping("/modReview")
+	public void modReview(Model model, @RequestParam(required=true) Integer reviewId) {
+		Review review = service.modReview(reviewId);
+		model.addAttribute("review",review);
+		model.addAttribute("matzipName",service.putReview1(review.getMatzipId()));
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/deleteReview", method=RequestMethod.POST)
+	public ResponseEntity<Integer> deleteReview(@RequestBody HashMap<String,Integer> map){
+		log.info(map);
+		int result = service.deleteReview(map.get("reviewId"));
+		return new ResponseEntity<>(result,HttpStatus.OK);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/deleteMatzip",method=RequestMethod.POST)
+	public ResponseEntity<Integer> deleteMatzip(@RequestBody HashMap<String,Integer> map){
+		log.info(map);
+		int result = service.deleteMatzip(map.get("matzipId"));
+		return new ResponseEntity<>(result,HttpStatus.OK);
+	}
+	
+	@PostMapping("/modReviewAction")
+	public ResponseEntity<String> modReviewAction(@RequestPart(value="request") ModReview modReview, @RequestPart(value="uploadFile") MultipartFile uploadFile) {
+		String uploadFolder="C:/Users/dones/git/catchmatzip/catchmatzip/src/main/webapp/resources/img/matzip";
+		
+		log.info("----------------------------");
+		log.info("Upload File Name: "+uploadFile.getOriginalFilename());
+		log.info("Upload File Size: "+uploadFile.getSize());
+		
+		UUID uuid = UUID.randomUUID();
+		String uploadFileName = uuid.toString()+"_"+uploadFile.getOriginalFilename();
+		
+		Review review = new Review();
+		review.setReviewId(modReview.getReviewId());
+		review.setScore(modReview.getScore());
+		review.setReviewComment(modReview.getReviewComment());
+		review.setImage(uploadFileName);
+		
+		
+		File saveFile = new File(uploadFolder, uploadFileName);
+		try {
+			uploadFile.transferTo(saveFile);
+		} catch(Exception e) {log.error(e.getMessage());}
+		service.modReviewAction(review);
+		return new ResponseEntity<>("success",HttpStatus.OK);
+	}
+	
+	
+	
+	@PostMapping("/uploadAjaxAction")
+	public ResponseEntity<String> uploadAjaxPost(@RequestPart(value="request") PutReview putReview, @RequestPart(value="uploadFile") MultipartFile uploadFile) {
+		//2. 리뷰 등록 시 필요한 정보 : matzipId, userId, reviewComment, image
+		String uploadFolder="C:/Users/dones/git/catchmatzip/catchmatzip/src/main/webapp/resources/img/matzip";
+		
+			log.info("----------------------------");
+			log.info("Upload File Name: "+uploadFile.getOriginalFilename());
+			log.info("Upload File Size: "+uploadFile.getSize());
+			
+			UUID uuid = UUID.randomUUID();
+			String uploadFileName = uuid.toString()+"_"+uploadFile.getOriginalFilename();
+			
+			Review review = new Review();
+			review.setMatzipId(putReview.getMatzipId());
+			review.setUserId(putReview.getUserId());
+			review.setScore(putReview.getScore());
+			review.setReviewComment(putReview.getReviewComment());
+			review.setImage(uploadFileName);
+			
+			
+			File saveFile = new File(uploadFolder, uploadFileName);
+			try {
+				uploadFile.transferTo(saveFile);
+			} catch(Exception e) {log.error(e.getMessage());}
+			service.putReview(review);
+		return new ResponseEntity<>("success",HttpStatus.OK);
+	}
+	
+	//matzipApply
+		@GetMapping("/matzipApply")
+		public void matzipApply(){
+			log.info("matzipApply...");
+		}
+			
+		@PostMapping(value="/matzipApply1")
+		public ResponseEntity<String> matzipApply1(@RequestPart(value="request") MatzipApply matzipApply, @RequestPart(value="uploadFile") MultipartFile uploadFile) {
+			String uploadFolder="C:/Users/dones/git/catchmatzip/catchmatzip/src/main/webapp/resources/img/matzip";
+			
+			log.info("----------------------------");
+			log.info("Upload File Name: "+uploadFile.getOriginalFilename());
+			log.info("Upload File Size: "+uploadFile.getSize());
+			
+			UUID uuid = UUID.randomUUID();
+			String uploadFileName = uuid.toString()+"_"+uploadFile.getOriginalFilename();
+			
+			Matzip matzip = new Matzip();
+			matzip.setMatzipName(matzipApply.getMatzipName());
+			matzip.setDetailAddress(matzipApply.getDetailAddress());
+			matzip.setCategory(matzipApply.getCategory());
+			matzip.setImage(uploadFileName);
+			
+			File saveFile = new File(uploadFolder, uploadFileName);
+			try {
+				uploadFile.transferTo(saveFile);
+			} catch(Exception e) {log.error(e.getMessage());}
+			
+			service.matzipApply1(matzip, matzipApply.getAddressId());
+			
+			return new ResponseEntity<>("success",HttpStatus.OK);
+		}
+		
+		//matzipModify
+		@GetMapping("/matzipModify")
+		public void matzipModify(@RequestParam("matzipId") Integer matzipId,Model model) {
+			log.info("/matzipModify");
+			model.addAttribute("matzip",service.getMatzip(matzipId));
+			model.addAttribute("address", service.getMatzipCity(matzipId));
+
+		}
+		
+		@PostMapping(value="/matzipModify1")
+		public ResponseEntity<String> matzipModify1(@RequestPart(value="request") MatzipModify matzipModify, @RequestPart(value="uploadFile") MultipartFile uploadFile) {
+			String uploadFolder="C:/Users/dones/git/catchmatzip/catchmatzip/src/main/webapp/resources/img/matzip";
+			
+			log.info("----------------------------");
+			log.info("Upload File Name: "+uploadFile.getOriginalFilename());
+			log.info("Upload File Size: "+uploadFile.getSize());
+			
+			UUID uuid = UUID.randomUUID();
+			String uploadFileName = uuid.toString()+"_"+uploadFile.getOriginalFilename();
+			Matzip matzip = new Matzip();
+			matzip.setMatzipId(matzipModify.getMatzipId());
+			matzip.setMatzipName(matzipModify.getMatzipName());
+			matzip.setDetailAddress(matzipModify.getDetailAddress());
+			matzip.setCategory(matzipModify.getCategory());
+			matzip.setImage(uploadFileName);
+			
+			File saveFile = new File(uploadFolder, uploadFileName);
+			try {
+				uploadFile.transferTo(saveFile);
+			} catch(Exception e) {log.error(e.getMessage());}
+			
+			service.matzipModify1(matzip, matzipModify.getAddressId());
+			
+			return new ResponseEntity<>("success",HttpStatus.OK);
+		}
+		
 	
 //	@PostMapping("/putReview2")
 //	@ResponseBody

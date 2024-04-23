@@ -20,7 +20,7 @@
 				<div class="row g-4">
 					<div class="col-12">
 						<div class="text-center mx-auto" style="max-width: 700px;">
-							<h1 class="text-primary">계정 찾기</h1>
+							<h1 class="text-primary">아이디/패스워드 찾기</h1>
 						</div>
 					</div>
 

@@ -2,13 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 <meta charset="utf-8">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 <title>관리자 전용 맛집정보</title>
 
@@ -48,35 +49,16 @@
 					</form>
 				</div>
 				<div class="col-6"></div>
-				<!--   <div class="col-xl-3">
-	                                <div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4">
-	                                    <select id="fruits" name="fruitlist" class="border-0 form-select-sm bg-light me-3" form="fruitform">
-	                                        <option value="volvo">전라남도</option>
-	                                    </select>
-	                                </div>
-	                            </div> -->
 
 
 				<div class="col-xl-3">
-					<div class="mt-5">
-						<!--  <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code"> -->
-						<button
-							class="btn border-secondary rounded-pill px-4 py-3 text-primary"
-							type="button">맛집 추가하기</button>
+					<div class="input-group w-100 mx-auto d-flex">
+<!-- 						<button -->
+<!-- 							class="btn border-secondary rounded-pill px-4 py-3 text-primary" -->
+<!-- 							type="button">맛집 추가하기</button> -->
+						<a class="btn border-secondary round-pill px-4 py-3 text-primary" href="/matzip/matzipApply">맛집 추가하기</a>
 					</div>
-<!-- 					<div -->
-<!-- 						class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4"> -->
 
-<!-- 						<select id="fruits" name="district" -->
-<!-- 							class="border-0 form-select-sm bg-light me-3"> -->
-<!-- 							<option value="">전라남도</option> -->
-<!-- 						</select> <select id="fruits" name="city" -->
-<!-- 							class="border-0 form-select-sm bg-light me-3"> -->
-<%-- 							<c:forEach var="address" items="${aList }"> --%>
-<%-- 								<option value="${address.city }">${address.city }</option> --%>
-<%-- 							</c:forEach> --%>
-<!-- 						</select> -->
-<!-- 					</div> -->
 				</div>
 			</div>
 
@@ -118,24 +100,73 @@
 										${matzip.detailAddress }</p>
 								</td>
 								<td style="text-align: center;">
-									<button class="btn btn-md rounded-circle bg-light border mt-4">
+									<a class="btn btn-md rounded-circle bg-light border mt-4" href="/matzip/matzipModify?matzipId=${matzip.matzipId }">
 										<i class="bi bi-pencil-square"></i>
-									</button>
+									</a>
 								</td>
 								<td style="text-align: center">
-									<button class="btn btn-md rounded-circle bg-light border mt-4">
+									<button type="button" class="btn btn-md rounded-circle bg-light border mt-4" id="delete${matzip.matzipId}">
 										<i class="fa fa-times text-danger"></i>
 									</button>
+									<script type="text/javascript">
+										$(document).ready(function(){
+											$("#delete${matzip.matzipId}").on("click",function(){
+												var result = confirm('맛집을 삭제하시겠습니까?');
+		                						if(result){
+		                							var target = {
+		                									matzipId: ${matzip.matzipId}
+		                									};
+		                							$.ajax({
+		                								type:'post',
+		                								url:'/matzip/deleteMatzip',
+		                								data: JSON.stringify(target),
+		                								datatype: "json",
+		                								contentType: "application/json",
+		                								success : function(data){
+		                									alert('삭제되었습니다.');
+		                									document.location.reload();
+		                								}
+		                							});//ajax
+		                						}
+											});
+										});
+									</script>
 								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
+				
+				<div class="col-12"> 
+ 									<div class="pagination d-flex justify-content-center mt-5"> 
+ 									
+ 									<c:if test="${pagingDTO.prev}">
+ 									<a href="${pagingDTO.start-1 }" tabindex="-1" class="rounded">&laquo;</a> 
+ 									</c:if>
+ 									
+ 									<c:forEach var="num" begin="${pagingDTO.start}" end="${pagingDTO.end}">
+ 										<a href="${num }"	class="rounded">${num }</a> 
+ 									</c:forEach>
+ 									
+ 									<c:if test="${pagingDTO.next }">
+ 											<a href="${pagingDTO.end+1 }" class="rounded">&raquo;</a> 
+ 									</c:if>
+ 									
+
+ 									</div> 
+ 								</div> 
+				
 			</div>
 		</div>
 	</div>
 	<!-- Cart Page End -->
-
+	
+	<form id="actionFrm" action="${pageContext.request.contextPath }/matzip/adminmatzip">
+		<input type="hidden" name="pageNum" value="${pagingDTO.cri.pageNum }">
+		<input type="hidden" name="amount" value="${pagingDTO.cri.amount }">
+	</form>
+	
+ 								
 
 
 
@@ -158,6 +189,20 @@
 
 	<!-- Template Javascript -->
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+	
+	<script>
+	$(document).ready(function(){
+		 var actionFrm = $("#actionFrm");
+		 $(".rounded").on("click", function(e){
+			e.preventDefault();
+			console.log('click');			
+			actionFrm.find("input[name='pageNum']").val($(this).attr("href"));
+			actionFrm.submit();
+		 })
+		
+	})
+	
+	</script>
 </body>
 
 </html>

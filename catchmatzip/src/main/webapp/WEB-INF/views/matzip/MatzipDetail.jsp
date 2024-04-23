@@ -26,9 +26,9 @@
 
 
 	<!-- Single Page Header start -->
-	<!-- <div class="container-fluid page-header py-5">
-            <h1 class="text-center text-white display-6"></h1>
-        </div>  -->
+	<div class="container-fluid page-header py-5">
+		<h1 class="text-center display-6" style="color: #81c408">맛집 상세보기</h1>
+	</div>
 	<!-- Single Page Header End -->
 
 
@@ -48,6 +48,7 @@
 						<div class="col-lg-6">
 							<h4 class="fw-bold mb-3">${matzip.matzipName}</h4>
 							<p class="mb-3">${matzip.category}</p>
+							
 							<c:forEach begin="1" end="${matzip.averageScore}">
 								<i class="fa fa-star text-secondary"></i>
 							</c:forEach>
@@ -56,7 +57,7 @@
 
 <!-- 							<a href="#"	class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"> -->
 <!-- 							<i class="fa fa-shopping-bag me-2 text-primary"></i>즐겨찾기 추가</a> -->
-							<a href="putReview.jsp"	class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">
+							<a href="/matzip/putReview?matzipId=${matzip.matzipId }"	class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">
 							<i class="fa fa-shopping-bag me-2 text-primary"></i>리뷰 등록하기</a>
 						</div>
 						<div class="col-lg-12">

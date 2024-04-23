@@ -77,7 +77,7 @@
 								<c:forEach var="matzip" items="${mListAll}">
 									<div class="col-md-6 col-lg-6 col-xl-4">
 
-										<a href="#">
+										<a href="${pageContext.request.contextPath }/matzip/MatzipDetail?matzipId=${matzip.matzipId}">
 											<div class="fruite-img">
 												<img
 													src="${pageContext.request.contextPath}/resources/img/matzip/${matzip.image}"

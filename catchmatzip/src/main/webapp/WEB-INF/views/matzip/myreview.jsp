@@ -42,11 +42,34 @@
 		                			<p>${myreview.writtenTime }</p>
 		                			</div>
 		                			
-		                			<div style="width:450px;">
+		                			<div style="width:400px;">
 		                			<p class="m-0 pb-3">${myreview.reviewComment }</p>
 		                			</div>
-		                			<a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">수정하기</a>
-		                			<a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">삭제하기</a>
+		                			<a href="/matzip/modReview?reviewId=${myreview.reviewId}" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">수정하기</a>
+		                			<button type="button" id="delete${myreview.reviewId }" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">삭제하기</button>
+		                			<script type="text/javascript">
+		                				$(document).ready(function(){
+		                					$("#delete${myreview.reviewId}").on("click",function(){
+		                						var result = confirm('리뷰를 삭제하시겠습니까?');
+		                						if(result){
+		                							var target = {
+		                									reviewId: ${myreview.reviewId}
+		                									};
+		                							$.ajax({
+		                								type:'post',
+		                								url:'/matzip/deleteReview',
+		                								data: JSON.stringify(target),
+		                								datatype: "json",
+		                								contentType: "application/json",
+		                								success : function(data){
+		                									alert('삭제되었습니다.');
+		                									document.location.reload();
+		                								}
+		                							});//ajax
+		                						}
+		                					});
+		                				});
+		                			</script>
 	                			</div>
 		                	</div>
 	               		</div>

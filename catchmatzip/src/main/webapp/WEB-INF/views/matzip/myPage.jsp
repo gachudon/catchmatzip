@@ -106,7 +106,7 @@
 									</select>
 								</div>
 								<script type="text/javascript">
-									var addressId = <%= session.getAttribute("addressId")%>
+									var addressId = <%= session.getAttribute("addressId")%>;
 									$(document).ready(function(){
 										$("select[name=addressId] option[name=addressId]").prop("selected",true);
 									});

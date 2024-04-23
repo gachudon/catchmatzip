@@ -23,9 +23,12 @@
 
 	<div style="height: 50px"></div>
 	<!-- Fruits Shop Start-->
+	<div class="container-fluid py-5 mb-5 hero-header">
+		<h1 class="text-center display-6" style="color: #81c408">우리 동네 맛집 찾기</h1>
+	</div>
 	<div class="container-fluid fruite py-5">
 		<div class="container py-5">
-			<h2 class="mb-4">전라남도 ${city}</h2>
+			<h2 class="mb-4">${district} ${city}</h2>
 			<div class="row g-4">
 				<div class="col-lg-12">
 					<div class="row g-4">

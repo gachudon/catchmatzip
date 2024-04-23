@@ -19,7 +19,7 @@
                 <div class="row g-5 align-items-center">
                     <div class="col-md-12 col-lg-7">
                         <h4 class="mb-3 text-secondary">우리동네 맛집 찾기</h4>
-                        <h1 class="mb-5 display-3 text-primary"> 맛Zip에 오신 것을 환영합니다</h1>
+                        <h1 class="mb-5 display-3 text-primary"> 맛Zip에 오신 것을 환영합니다.</h1>
                         <form action="${pageContext.request.contextPath }/matzip/searchMatzip" method="post">
                         <div class="position-relative mx-auto">
                             <input class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill" type="text" name="search" >

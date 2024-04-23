@@ -51,7 +51,7 @@ public class MatzipService {
 		log.info("myReview...");
 		return mapper.myReview(userId);
 	}
-	
+	//리뷰 등록, 수정------------------------------------------------------------------
 	public int putReview(Review review) {
 		log.info("putReview...");
 		return mapper.putReview(review);
@@ -60,6 +60,27 @@ public class MatzipService {
 	public String putReview1(Integer matzipId) {
 		log.info("putReview1");
 		return mapper.putReview1(matzipId);
+	}
+	
+	public Review modReview(Integer reviewId) {
+		log.info(reviewId);
+		return mapper.modReview(reviewId);
+	}
+	
+	public int modReviewAction(Review review) {
+		log.info("modReview...");
+		return mapper.modReviewAction(review);
+	}
+	//리뷰 등록, 수정------------------------------------------------------------------
+	
+	public int deleteReview(int reviewId) {
+		log.info("deleteReview...");
+		return mapper.deleteReview(reviewId);
+	}
+	
+	public int deleteMatzip(int matzipId) {
+		log.info("deleteMatzip....");
+		return mapper.deleteMatzip(matzipId);
 	}
 	
 	//ssm
@@ -101,7 +122,36 @@ public class MatzipService {
 			return mapper.getAddrSearchMatzip(search, addressId);
 		}
 	
-	
+		//adminMatzip => Paging
+		public List<Matzip> adminMatzipPaging(Integer first, Integer second){
+			return mapper.adminMatzipPaging(first, second);
+		}
+		
+		public Integer countAdminMatzip() {
+			return mapper.countAdminMatzip();
+		}
+		
+		//matzipApply
+		public int matzipApply1(Matzip matzip,Integer addressId) {
+			log.info("service-matzipApply1");
+			System.out.println(matzip.getMatzipName());
+			return  mapper.matzipApply1(matzip, addressId)==1?1:0;
+		}
+				
+		//matzipModify
+		public Matzip getMatzip(Integer matzipId) {
+			return mapper.getMatzip(matzipId);
+		}
+		
+		public Address getMatzipCity(Integer matzipId) {
+			return mapper.getMatzipCity(matzipId);
+		}
+		
+		
+		public int matzipModify1(Matzip matzip, Integer addressId) {
+			return mapper.matzipModify1(matzip, addressId);
+		}
+		
 	//ssmend
 	//ajh
 	public String findIdResult(String userName, String phoneNumber) {

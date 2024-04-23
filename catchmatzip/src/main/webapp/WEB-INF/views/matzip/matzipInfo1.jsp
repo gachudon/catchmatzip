@@ -16,9 +16,9 @@
 
 
 	<!-- Single Page Header start -->
-	<!--  <div class="container-fluid page-header py-5">
-            <h1 class="text-center text-white display-6"></h1>
-        </div>  -->
+	<div class="container-fluid py-5 mb-5 hero-header">
+		<h1 class="text-center display-6" style="color: #81c408">우리 동네 맛집 찾기</h1>
+	</div>
 	<!-- Single Page Header End -->
 
 	<div style="height: 50px"></div>
@@ -106,15 +106,15 @@
 
 
 
-								<div class="col-12">
-									<div class="pagination d-flex justify-content-center mt-5">
-										<a href="#" class="rounded">&laquo;</a> <a href="#"
-											class="active rounded">1</a> <a href="#" class="rounded">2</a>
-										<a href="#" class="rounded">3</a> <a href="#" class="rounded">4</a>
-										<a href="#" class="rounded">5</a> <a href="#" class="rounded">6</a>
-										<a href="#" class="rounded">&raquo;</a>
-									</div>
-								</div>
+<!-- 								<div class="col-12"> -->
+<!-- 									<div class="pagination d-flex justify-content-center mt-5"> -->
+<!-- 										<a href="#" class="rounded">&laquo;</a> <a href="#" -->
+<!-- 											class="active rounded">1</a> <a href="#" class="rounded">2</a> -->
+<!-- 										<a href="#" class="rounded">3</a> <a href="#" class="rounded">4</a> -->
+<!-- 										<a href="#" class="rounded">5</a> <a href="#" class="rounded">6</a> -->
+<!-- 										<a href="#" class="rounded">&raquo;</a> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
 
 
 							</div>
