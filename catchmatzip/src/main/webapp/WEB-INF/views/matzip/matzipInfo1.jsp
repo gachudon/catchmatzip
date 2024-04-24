@@ -25,7 +25,7 @@
 	<!-- Fruits Shop Start-->
 	<div class="container-fluid fruite py-5">
 		<div class="container py-5">
-			<h2 class="mb-4">전라남도 ${city}</h2>
+			<h2 class="mb-4">${district} ${city}</h2>
 			<div class="row g-4">
 				<div class="col-lg-12">
 					<div class="row g-4">
@@ -39,17 +39,17 @@
 							</div>
 							</form>
 						</div>
-						<div class="col-6"></div>
-						<div class="col-xl-3">
-							<div
-								class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4">
-								<select id="fruits" name="fruitlist"
-									class="border-0 form-select-sm bg-light me-3" form="fruitform">
-									<option value="volvo">평점순</option>
-									<option value="saab">즐겨찾기 많은 순</option>
-									<option value="opel">리뷰많은순</option>
-								</select>
-							</div>
+<!-- 						<div class="col-6"></div> -->
+<!-- 						<div class="col-xl-3"> -->
+<!-- 							<div -->
+<!-- 								class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4"> -->
+<!-- 								<select id="fruits" name="fruitlist" -->
+<!-- 									class="border-0 form-select-sm bg-light me-3" form="fruitform"> -->
+<!-- 									<option value="volvo">평점순</option> -->
+<!-- 									<option value="saab">즐겨찾기 많은 순</option> -->
+<!-- 									<option value="opel">리뷰많은순</option> -->
+<!-- 								</select> -->
+<!-- 							</div> -->
 						</div>
 					</div>
 					<div class="row g-4">
@@ -92,8 +92,10 @@
 												<p>${matzip.category}</p>
 												<p>${matzip.district }${matzip.city }
 													${matzip.detailAddress }</p>
-												<div class="d-flex justify-content-between flex-lg-wrap">
-													<p class="mb-0">${matzip.averageScore }</p>
+												<div class="d-flex mb-3">
+													<c:forEach begin="1" end="${matzip.averageScore}">
+														<i class="fa fa-star text-secondary"></i>
+													</c:forEach>
 												</div>
 											</div>
 										</a>
